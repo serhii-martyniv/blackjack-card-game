@@ -22,20 +22,24 @@ A modern implementation of the classic Blackjack card game using vanilla JavaScr
 
 ```
 blackjack/
-│── src/
-│   ├── models/           # Core game logic classes
-│   │   ├── Card.js       # Represents a single card
-│   │   ├── Deck.js       # Manages a deck of cards
-│   │   ├── Player.js     # Represents a player (or dealer)
-│   │   ├── Hand.js       # Manages a player's hand
-│   │   ├── Game.js       # Controls the game logic
-│   ├── views/            # UI logic
-│   │   ├── UI.js         # Handles rendering and event listeners
-│   ├── controllers/      # Game flow and event handling
-│   │   ├── GameController.js # Connects models and views
-│   ├── index.js          # Entry point
-│── styles.css            # Styling
-│── index.html           # Main game page
+├── src/
+│   ├── controllers/
+│   │   └── GameController.js    # Game logic and state management
+│   ├── models/
+│   │   ├── Card.js             # Card class and deck management
+│   │   └── Game.js             # Game state and rules
+│   ├── utils/
+│   │   └── constants.js        # Game constants and configurations
+│   ├── views/
+│   │   └── UI.js               # DOM manipulation and event handling
+│   └── index.js                # Application entry point
+├── styles/
+│   ├── common.css              # Common styles, variables, and base styles
+│   ├── card.css                # Card-specific styles and animations
+│   ├── game.css                # Game layout and UI components
+│   └── index.css               # Main CSS file importing all styles
+├── index.html                  # Main game page
+└── README.md                   # Project documentation
 ```
 
 ## How to Run

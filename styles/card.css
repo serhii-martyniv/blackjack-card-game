@@ -1,0 +1,126 @@
+.card {
+  width: var(--card-width);
+  height: var(--card-height);
+  background: var(--color-card-bg);
+  border-radius: var(--radius-sm);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: clamp(1.1rem, 3.2vw, 1.3rem);
+  font-weight: 600;
+  box-shadow: 
+    0 2px 4px var(--color-card-shadow),
+    0 0 0 1px var(--color-card-border);
+  transition: all var(--transition-fast);
+  position: relative;
+  margin-right: var(--card-overlap);
+  cursor: pointer;
+}
+
+.card:last-child {
+  margin-right: 0;
+}
+
+.card[data-suit="♥"],
+.card[data-suit="♦"] {
+  color: var(--color-heart-diamond);
+}
+
+.card[data-suit="♠"],
+.card[data-suit="♣"] {
+  color: var(--color-spade-club);
+}
+
+.card:hover {
+  transform: translateY(-4px);
+  box-shadow: 
+    0 4px 8px var(--color-card-shadow),
+    0 0 0 1px var(--color-card-border);
+  z-index: 2;
+}
+
+.card:active {
+  transform: translateY(-2px);
+  box-shadow: 
+    0 3px 6px var(--color-card-shadow),
+    0 0 0 1px var(--color-card-border);
+}
+
+.card.hidden-card {
+  background: linear-gradient(135deg, 
+    var(--color-card-back-primary) 0%,
+    var(--color-card-back-secondary) 100%
+  );
+  color: transparent;
+}
+
+.card.hidden-card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  margin: 4px;
+  border: 2px solid var(--color-card-back-accent);
+  border-radius: calc(var(--radius-sm) - 2px);
+  background-image: repeating-linear-gradient(
+    -45deg,
+    var(--color-card-back-pattern) 0px,
+    var(--color-card-back-pattern) 2px,
+    transparent 2px,
+    transparent 6px
+  );
+}
+
+.card.hidden-card::after {
+  content: '';
+  position: absolute;
+  inset: 8px;
+  border: 2px solid var(--color-card-back-accent);
+  border-radius: calc(var(--radius-sm) - 4px);
+  background: var(--color-card-back-primary);
+  background-image: 
+    radial-gradient(
+      circle at center,
+      var(--color-card-back-accent) 0%,
+      var(--color-card-back-accent) 30%,
+      transparent 30%
+    ),
+    radial-gradient(
+      circle at center,
+      var(--color-card-back-pattern) 0%,
+      var(--color-card-back-pattern) 20%,
+      transparent 20%
+    );
+  background-size: 100% 100%;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.card.hidden-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 
+    0 4px 8px var(--color-card-shadow),
+    0 0 0 2px var(--color-card-back-accent),
+    0 0 20px rgba(37, 99, 235, 0.3);
+}
+
+.card.hidden-card:active {
+  transform: translateY(-2px);
+  box-shadow: 
+    0 3px 6px var(--color-card-shadow),
+    0 0 0 2px var(--color-card-back-accent),
+    0 0 10px rgba(37, 99, 235, 0.2);
+}
+
+@media (max-width: 400px), (max-height: 600px) {
+  .card {
+    font-size: clamp(1rem, 2.8vw, 1.2rem);
+  }
+
+  .card.hidden-card::before {
+    margin: 3px;
+  }
+
+  .card.hidden-card::after {
+    inset: 6px;
+  }
+} 
